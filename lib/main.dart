@@ -54,9 +54,38 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       initialRoute: '/',
-      routes: {'/': (context) => HomePage(), '/info': (context) => InfoPage()},
+      routes: {'/home': (context) => HomePage(), '/info': (context) => InfoPage(), '/': (context) => PageOne()},
     );
   }
+}
+
+class PageOne extends StatefulWidget{
+  @override
+  _PageOneState createState() => _PageOneState();
+}
+
+class _PageOneState extends State<PageOne> {
+
+  @override
+  Widget build(BuildContext context){
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Title'),
+          centerTitle: true,
+      ),
+      body: Center(
+        child: FlatButton(
+          onPressed: (){
+            Navigator.of(context).pushNamed('/home');
+          },
+        ),
+      ),
+    );
+  }
+
+
 }
 
 class HomePage extends StatefulWidget {
